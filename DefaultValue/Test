@@ -1,0 +1,8 @@
+package checkDefaultVal;
+
+public class Test {
+	public static void main(String [] args) {
+		CheckDefault ts=new CheckDefault();
+		ts.check();
+	}
+}
