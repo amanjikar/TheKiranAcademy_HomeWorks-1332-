@@ -1,0 +1,25 @@
+package checkDefaultVal;
+
+public class CheckDefault {
+	int i;
+	byte w;
+	long s;
+	String st;
+	short sh;
+	char ch;
+	double db;
+	float ft;
+	
+	
+	void check() {
+		System.out.println(i);
+		System.out.println(w);
+		System.out.println(s);
+		System.out.println(st);
+		System.out.println(sh);
+		System.out.println(ch);
+		System.out.println(db);
+		System.out.println(ft);
+		
+	}
+}
