@@ -1,0 +1,8 @@
+package Fuzz_Buzz;
+
+public class Test {
+	public static void main(String args[]) {
+		Fizz f1=new Fizz();
+		f1.check();
+	}
+}
