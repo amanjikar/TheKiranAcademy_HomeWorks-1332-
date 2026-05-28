@@ -1,0 +1,32 @@
+package Fuzz_Buzz;
+
+public class Fizz {
+	void check() {
+		
+		for(int var=1;var<=30;var++) {
+			if(var%3==0 && var%5==0) {
+				System.out.println("FIZZBUZZ");
+			}else if(var%5==0) {
+				System.out.println("BUZZ");
+			}
+			else if(var%3==0) {
+				System.out.println("FIZZ");
+			}
+		}
+	}
+}
+OutPut
+FIZZ
+BUZZ
+FIZZ
+FIZZ
+BUZZ
+FIZZ
+FIZZBUZZ
+FIZZ
+BUZZ
+FIZZ
+FIZZ
+BUZZ
+FIZZ
+FIZZBUZZ
