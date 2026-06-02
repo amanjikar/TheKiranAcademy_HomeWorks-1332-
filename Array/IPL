@@ -1,0 +1,38 @@
+package com.tka.jun2;
+
+public class Test {
+	public static void main(String [] args) {
+		
+		IPL arr[]=new IPL[5];
+		
+		IPL i1=new IPL(18,"Virat K",200.2,50000);
+		IPL i2=new IPL(45,"Rohit S",199.2,51000);
+		IPL i3=new IPL(03,"Vaibhav S",205.2,500);
+		IPL i4=new IPL(7,"M S Dhoni",190.2,40000);
+		IPL i5=new IPL(1,"Shubhman G",2.160,6000);
+		
+		arr[0]=i1;
+		arr[1]=i2;
+		arr[2]=i3;
+		arr[3]=new IPL(18,"Virat K",200.2,50000);
+		arr[4]=i5;
+		
+
+		
+		String nm="";
+		int runmx=0;
+		
+		for(int i=0;i<arr.length;i++) {
+			if(arr[i].run>runmx) {
+				runmx=arr[i].run;
+				nm=arr[i].name;
+			}
+		}
+		System.out.println(nm);
+		
+	}
+}
+
+//OUTPUT
+Rohit S
+
