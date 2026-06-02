@@ -1,0 +1,15 @@
+package com.tka.jun2;
+
+public class IPL {
+	int jersyNo;
+	String name;
+	double runrate;
+	int run;
+	
+	public IPL(int j,String n,double rn,int r){
+		jersyNo=j;
+		name=n;
+		runrate=r;
+		run=r;
+	}
+}
