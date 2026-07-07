@@ -1,1 +1,85 @@
+mysql> USE batch1332_ws_db;
+Database changed
+mysql> show tables;
++---------------------------+
+| Tables_in_batch1332_ws_db |
++---------------------------+
+| player                    |
+| table_1_demo              |
++---------------------------+
+2 rows in set (0.05 sec)
 
+mysql> ALTER TABLE player RENAME TO players;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> SELECT * FROM players;
++---------+--------------+-------+--------+-----------+
+| jersyNO | name         | run   | wicket | team_name |
++---------+--------------+-------+--------+-----------+
+|    1111 | Chris_Gel    | 23233 |    233 | K11P      |
+|      45 | Rohit sharma |  2326 |     33 | MI        |
+|      18 | Virat KOlhi  | 50000 |    238 | RCB       |
++---------+--------------+-------+--------+-----------+
+3 rows in set (0.01 sec)
+
+mysql> ALTER TABLE players CHANGE wicket  wickets INT;
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM players;
++---------+--------------+-------+---------+-----------+
+| jersyNO | name         | run   | wickets | team_name |
++---------+--------------+-------+---------+-----------+
+|    1111 | Chris_Gel    | 23233 |     233 | K11P      |
+|      45 | Rohit sharma |  2326 |      33 | MI        |
+|      18 | Virat KOlhi  | 50000 |     238 | RCB       |
++---------+--------------+-------+---------+-----------+
+3 rows in set (0.00 sec)
+
+mysql> ALTER TABLE players DROP COLUMN team_name;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM players;
++---------+--------------+-------+---------+
+| jersyNO | name         | run   | wickets |
++---------+--------------+-------+---------+
+|    1111 | Chris_Gel    | 23233 |     233 |
+|      45 | Rohit sharma |  2326 |      33 |
+|      18 | Virat KOlhi  | 50000 |     238 |
++---------+--------------+-------+---------+
+3 rows in set (0.01 sec)
+
+
+mysql> ALTER TABLE players MODIFY run BIGINT;
+Query OK, 3 rows affected (0.06 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> DESC players;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| jersyNO | int         | YES  |     | NULL    |       |
+| name    | varchar(50) | YES  |     | NULL    |       |
+| run     | bigint      | YES  |     | NULL    |       |
+| wickets | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+4 rows in set (0.02 sec)
+
+mysql> ALTER TABLE players ADD COLUMN nationality VARCHAR(50);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC players;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| jersyNO     | int         | YES  |     | NULL    |       |
+| name        | varchar(50) | YES  |     | NULL    |       |
+| run         | bigint      | YES  |     | NULL    |       |
+| wickets     | int         | YES  |     | NULL    |       |
+| nationality | varchar(50) | YES  |     | NULL    |       |
++-------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+mysql>
