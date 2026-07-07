@@ -1,1 +1,140 @@
+mysql> use capgemini;
+Database changed
 
+mysql> show tables;
++---------------------+
+| Tables_in_capgemini |
++---------------------+
+| employee            |
++---------------------+
+1 row in set (0.07 sec)
+
+mysql> SELECT * FROM employee;
++------+-------+---------+-----------------+--------+------+------------+
+| id   | name  | profile | email           | salary | age  | experience |
++------+-------+---------+-----------------+--------+------+------------+
+|    1 | rani  | dev     | rani@gmail.com  |  11000 |   43 |         27 |
+|    2 | raj   | test    | raj@gmail.com   |  21000 |   33 |         17 |
+|    3 | radha | test    | radha@gmail.com |  26000 |   38 |         21 |
+|    4 | raj   | dev     | raj@gmail.com   |  51000 |   32 |         12 |
+|    5 | john  | dev     | john@gmail.com  |  51000 |   39 |         27 |
++------+-------+---------+-----------------+--------+------+------------+
+5 rows in set (0.01 sec)
+
+mysql> SELECT name FROM employee WHERE salary>20000;
++-------+
+| name  |
++-------+
+| raj   |
+| radha |
+| raj   |
+| john  |
++-------+
+4 rows in set (0.01 sec)
+
+mysql> SELECT * FROM employee WHERE salary=51000;
++------+------+---------+----------------+--------+------+------------+
+| id   | name | profile | email          | salary | age  | experience |
++------+------+---------+----------------+--------+------+------------+
+|    4 | raj  | dev     | raj@gmail.com  |  51000 |   32 |         12 |
+|    5 | john | dev     | john@gmail.com |  51000 |   39 |         27 |
++------+------+---------+----------------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT name , experience FROM employee WHERE age>35;
++-------+------------+
+| name  | experience |
++-------+------------+
+| rani  |         27 |
+| radha |         21 |
+| john  |         27 |
++-------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employee WHERE profile="dev";
++------+------+---------+----------------+--------+------+------------+
+| id   | name | profile | email          | salary | age  | experience |
++------+------+---------+----------------+--------+------+------------+
+|    1 | rani | dev     | rani@gmail.com |  11000 |   43 |         27 |
+|    4 | raj  | dev     | raj@gmail.com  |  51000 |   32 |         12 |
+|    5 | john | dev     | john@gmail.com |  51000 |   39 |         27 |
++------+------+---------+----------------+--------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employee WHERE profile="test";
++------+-------+---------+-----------------+--------+------+------------+
+| id   | name  | profile | email           | salary | age  | experience |
++------+-------+---------+-----------------+--------+------+------------+
+|    2 | raj   | test    | raj@gmail.com   |  21000 |   33 |         17 |
+|    3 | radha | test    | radha@gmail.com |  26000 |   38 |         21 |
++------+-------+---------+-----------------+--------+------+------------+
+2 rows in set (0.00 sec)
+
+mysql> SELECT * FROM employee WHERE salary >= 25000;
++------+-------+---------+-----------------+--------+------+------------+
+| id   | name  | profile | email           | salary | age  | experience |
++------+-------+---------+-----------------+--------+------+------------+
+|    3 | radha | test    | radha@gmail.com |  26000 |   38 |         21 |
+|    4 | raj   | dev     | raj@gmail.com   |  51000 |   32 |         12 |
+|    5 | john  | dev     | john@gmail.com  |  51000 |   39 |         27 |
++------+-------+---------+-----------------+--------+------+------------+
+3 rows in set (0.00 sec)
+
+mysql> SELECT name,email FROM employee WHERE salary!=51000;
++-------+-----------------+
+| name  | email           |
++-------+-----------------+
+| rani  | rani@gmail.com  |
+| raj   | raj@gmail.com   |
+| radha | radha@gmail.com |
++-------+-----------------+
+3 rows in set (0.00 sec)
+
+mysql> UPDATE SET salary=salary+10000 FROM employee where experience<20;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'SET salary=salary+10000 FROM employee where experience<20' at line 1
+mysql> UPDATE employee SET salary=salary+10000 where experience<20;
+Query OK, 2 rows affected (0.03 sec)
+Rows matched: 2  Changed: 2  Warnings: 0
+
+mysql> SELECT * FROM employee;
++------+-------+---------+-----------------+--------+------+------------+
+| id   | name  | profile | email           | salary | age  | experience |
++------+-------+---------+-----------------+--------+------+------------+
+|    1 | rani  | dev     | rani@gmail.com  |  11000 |   43 |         27 |
+|    2 | raj   | test    | raj@gmail.com   |  31000 |   33 |         17 |
+|    3 | radha | test    | radha@gmail.com |  26000 |   38 |         21 |
+|    4 | raj   | dev     | raj@gmail.com   |  61000 |   32 |         12 |
+|    5 | john  | dev     | john@gmail.com  |  51000 |   39 |         27 |
++------+-------+---------+-----------------+--------+------+------------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE FROM employee WHERE experience=21;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM employee;
++------+------+---------+----------------+--------+------+------------+
+| id   | name | profile | email          | salary | age  | experience |
++------+------+---------+----------------+--------+------+------------+
+|    1 | rani | dev     | rani@gmail.com |  11000 |   43 |         27 |
+|    2 | raj  | test    | raj@gmail.com  |  31000 |   33 |         17 |
+|    4 | raj  | dev     | raj@gmail.com  |  61000 |   32 |         12 |
+|    5 | john | dev     | john@gmail.com |  51000 |   39 |         27 |
++------+------+---------+----------------+--------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> UPDATE employee SET salary=salary-21000 WHERE name="john";
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM employee;
++------+------+---------+----------------+--------+------+------------+
+| id   | name | profile | email          | salary | age  | experience |
++------+------+---------+----------------+--------+------+------------+
+|    1 | rani | dev     | rani@gmail.com |  11000 |   43 |         27 |
+|    2 | raj  | test    | raj@gmail.com  |  31000 |   33 |         17 |
+|    4 | raj  | dev     | raj@gmail.com  |  61000 |   32 |         12 |
+|    5 | john | dev     | john@gmail.com |  30000 |   39 |         27 |
++------+------+---------+----------------+--------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql>
